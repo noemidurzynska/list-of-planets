@@ -1,0 +1,13 @@
+<div class="search-form">
+  <input type="text" id="planetName" name="planetName" [(ngModel)]="planetName" />
+  <button type="button" (click)="onSearchClick()">Search</button>
+</div>
+
+<kendo-grid [data]="gridView" [skip]="skip" [pageSize]="pageSize" [pageable]="true" (pageChange)="pageChange($event)">
+  <kendo-grid-column field="name" title="Planet"></kendo-grid-column>
+  <kendo-grid-column field="name" title=" ">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <button type="button" (click)="redirectToDetails(dataItem)">Details</button>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
