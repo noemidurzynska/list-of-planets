@@ -1,6 +1,8 @@
 <div class="search-form">
   <input type="text" id="planetName" name="planetName" [(ngModel)]="planetName" />
   <button type="button" (click)="onSearchClick()">Search</button>
+  <button type="button" (click)="onChangeModeClick()">Change mode</button>
+  <span>{{(offline ? 'you are in offline mode' : 'you are in online mode')}}</span>
 </div>
 
 <kendo-grid [data]="gridView" [skip]="skip" [pageSize]="pageSize" [pageable]="true" (pageChange)="pageChange($event)">

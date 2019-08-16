@@ -14,6 +14,7 @@ export class PlanetListComponent implements OnInit {
   public pageSize = 10;
   public skip = 0;
   public planetName: string;
+  public offline = false;
 
   private planets: any[];
 
@@ -21,23 +22,50 @@ export class PlanetListComponent implements OnInit {
     private readonly http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('https://swapi.co/api/planets/').subscribe((response: any) => {
-
-
-      this.gridView = {
-        data: response.results,
-        total: response.count
-      };
-    });
-
-
+    if (this.offline) {
+      this.loadGridOffline();
+    } else {
+      this.loadGrid('');
+    }
   }
 
   public pageChange(event: PageChangeEvent): void {
     this.skip = event.skip;
     const page = (event.skip / this.pageSize) + 1;
 
-    this.http.get('https://swapi.co/api/planets/?page=' + page).subscribe((response: any) => {
+    if (this.offline) {
+      this.loadGridOffline();
+    } else {
+     this.loadGrid('?page=' + page);
+    }
+  }
+
+  public onSearchClick(): void {
+    const search = this.fillSearchParameter();
+    if (this.offline) {
+      this.loadGridOffline();
+    } else {
+      this.loadGrid(search);
+    }
+  }
+
+  public onChangeModeClick(): void {
+    this.offline=!this.offline;
+
+  }
+
+
+  private fillSearchParameter(): string {
+    let search = '';
+    if (this.planetName && this.planetName.length > 0) {
+      search = '?search=' + this.planetName;
+    }
+    return search;
+  }
+
+  private loadGrid(parameter: string): void {
+
+    this.http.get('https://swapi.co/api/planets/' + parameter).subscribe((response: any) => {
 
       this.gridView = {
         data: response.results,
@@ -46,14 +74,9 @@ export class PlanetListComponent implements OnInit {
     });
   }
 
-  public onSearchClick(): void {
+  private loadGridOffline(): void {
 
-    let search = '';
-    if (this.planetName && this.planetName.length > 0)
-      search = '?search=' + this.planetName;
-
-    this.http.get('https://swapi.co/api/planets/' + search).subscribe((response: any) => {
-
+    this.http.get('../../assets/planets.json').subscribe((response: any) => {
 
       this.gridView = {
         data: response.results,
