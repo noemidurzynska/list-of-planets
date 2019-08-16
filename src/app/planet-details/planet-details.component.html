@@ -1,41 +1,27 @@
 <div>
-  <button type="button" (click)="redirectToHome()">Home</button>
+  <button type="button" class="btn btn-outline-warning btn-lg btn-block" (click)="redirectToHome()">Home</button>
 </div>
 
-<p>
-  You are reading about <b>{{name}}</b> planet
-</p>
-<table>
-  <tr>
-    <td>Rotation period</td>
-    <td>{{rotation_period}}</td>
-  </tr>
-  <tr>
-    <td>Orbital period</td>
-    <td>{{orbital_period}}</td>
-  </tr>
-  <tr>
-    <td>Diameter</td>
-    <td>{{diameter}}</td>
-  </tr>
-  <tr>
-    <td>Climate</td>
-    <td>{{climate}}</td>
-  </tr>
-  <tr>
-    <td>Gravity</td>
-    <td>{{gravity}}</td>
-  </tr>
-  <tr>
-    <td>Terrain</td>
-    <td>{{terrain}}</td>
-  </tr>
-  <tr>
-    <td>Surface water</td>
-    <td>{{surface_water}}</td>
-  </tr>
-  <tr>
-    <td>Population</td>
-    <td>{{population}}</td>
-  </tr>
-</table>
+<div class="jumbotron">
+  <h1 class="display-4">{{name}}</h1>
+  <p class="lead">You are reading about <b>{{name}}</b> planet</p>
+  <hr class="my-4">
+</div>
+
+
+<div class="planet-container">
+  <div class="box1 color1">Rotation period <br><span class="large round-corners">{{rotation_period}}</span></div>
+  <div class="box1 color2">Orbital period <br><span class="large round-corners">{{orbital_period}}</span></div>
+  <div class="box1 color3">Diameter <br><span class="large round-corners">{{diameter}}</span></div>
+</div>
+
+<div class="planet-container">
+  <div class="box1 color4">Climate <br><span class="large round-corners">{{climate}}</span></div>
+  <div class="box1 color5">Gravity <br><span class="large round-corners">{{gravity}}</span></div>
+  <div class="box1 color6">Terrain <br><span class="large round-corners">{{terrain}}</span></div>
+</div>
+
+<div class="planet-container">
+  <div class="box1 color7">Surface water <br><span class="large round-corners">{{surface_water}}</span></div>
+  <div class="box1 color8">Population <br><span class="large round-corners">{{population}}</span></div>
+</div>

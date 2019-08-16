@@ -1,15 +1,29 @@
-<div class="search-form">
-  <input type="text" id="planetName" name="planetName" [(ngModel)]="planetName" />
-  <button type="button" (click)="onSearchClick()">Search</button>
-  <button type="button" (click)="onChangeModeClick()">Change mode</button>
-  <span>{{(offline ? 'you are in offline mode' : 'you are in online mode')}}</span>
-</div>
+
+
+<div class="jumbotron">
+    <h1 class="display-4">List of Planets</h1>
+    <p class="lead">This is a place, you can learn about planets.Click the details button for more information.</p>
+    <hr class="my-4">
+    <p>Click <b>Change mode </b>to switch between online and offline mode. Have fun! </p>
+    <button class="btn btn-outline-secondary btn-lg btn-block" type="button" (click)="onChangeModeClick()">Change mode</button>
+  <div class="modeInformation">{{(offline ? 'You are in offline mode.' : 'You are in online mode.')}}</div>
+  </div>
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand"> </a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+
+
 
 <kendo-grid [data]="gridView" [skip]="skip" [pageSize]="pageSize" [pageable]="true" (pageChange)="pageChange($event)">
   <kendo-grid-column field="name" title="Planet"></kendo-grid-column>
-  <kendo-grid-column field="name" title=" ">
+  <kendo-grid-column field="name" title=" " width="100">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <button type="button" (click)="redirectToDetails(dataItem)">Details</button>
+      <button type="button" class="btn btn-info" (click)="redirectToDetails(dataItem)">Details</button>
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>
