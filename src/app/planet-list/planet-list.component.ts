@@ -19,7 +19,7 @@ export class PlanetListComponent implements OnInit {
   private planets: any[];
 
   constructor(private readonly router: Router,
-    private readonly http: HttpClient) { }
+              private readonly http: HttpClient) { }
 
   ngOnInit() {
     if (this.offline) {
@@ -50,7 +50,7 @@ export class PlanetListComponent implements OnInit {
   }
 
   public onChangeModeClick(): void {
-    this.offline=!this.offline;
+    this.offline = !this.offline;
 
   }
 
@@ -91,7 +91,7 @@ export class PlanetListComponent implements OnInit {
       dataItem.orbital_period + '/' +
       dataItem.diameter + '/' +
       dataItem.climate + '/' +
-      dataItem.gravity + '/' +
+      dataItem.gravity.replace('N/A', 'unknown') + '/' +
       dataItem.terrain + '/' +
       dataItem.surface_water + '/' +
       dataItem.population +

@@ -11,9 +11,9 @@
 
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand"> </a>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline" (keyup.enter)="onSearchClick()">
+      <input id="planetName" name="planetName" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="planetName">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="onSearchClick()">Search</button>
     </form>
   </nav>
 
